@@ -37,5 +37,6 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<jpa:repositories base-package="cz.jiripinkas.jba.repository" />
+	<import resource="security.xml"/>
 
 </beans>
