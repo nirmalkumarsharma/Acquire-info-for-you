@@ -5,6 +5,9 @@
 <%@ include file="../layout/taglib.jsp" %>
 <html>
 <head>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -34,9 +37,16 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="${current=='index'?'active':''}"><a href='<spring:url value="/" />'>Home</a></li>
-              <li class="${current=='users'?'active':''}"><a href="<spring:url value="/users.html" />">Users</a></li>
+              <security:authorize access="hasRole('ROLE_ADMIN')">
+              	<li class="${current=='users'?'active':''}"><a href="<spring:url value="/users.html" />">Users</a></li>
+              </security:authorize>
               <li class="${current=='register'?'active':''}"><a href="<spring:url value="/register.html" />">Register</a></li>
-              <li class="${current=='login'?'active':''}"><a href="<spring:url value="/login.html" />">Login</a></li>
+              <security:authorize access="! isAuthenticated()">
+              	<li class="${current=='login'?'active':''}"><a href="<spring:url value="/login.html" />">Login</a></li>
+              </security:authorize>
+              <security:authorize access="isAuthenticated()">
+              	<li><a href="<spring:url value="/logout" />">Logout</a></li>
+              </security:authorize>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
