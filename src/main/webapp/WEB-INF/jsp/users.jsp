@@ -5,7 +5,8 @@
 <table class="table table-bordered table-hover table-striped">
 	<thead>
 		<tr>
-			<th>user name</th>
+			<th>Username</th>
+			<th>Operations</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -15,8 +16,11 @@
 				<a href='<spring:url value="/users/${user.id}.html" />'>
 						${user.name}
 				</a>
-				
-					
+				</td>
+				<td>
+				<a href='<spring:url value="/users/remove/${user.id}.html" />' class="btn btn-danger">
+						Remove
+				</a>
 				</td>
 			</tr>
 		</c:forEach>

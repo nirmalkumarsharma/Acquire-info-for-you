@@ -6,7 +6,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  New Blog
+  Create new blog
 </button>
 <form:form commandName="blog" cssClass="form-horizontal">
 <!-- Modal -->
@@ -40,6 +40,53 @@
 </div>
 </form:form>
 
+<br/><br/>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.nav-tabs a:first').tab('show');
+	})
+</script>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+	<c:forEach items="${user.blogs}" var="blog">
+		<li><a href="#blog_${blog.id}" data-toggle="tab">${blog.name}</a></li>
+	</c:forEach >
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+  	<c:forEach items="${user.blogs}" var="blog">
+    	<div class="tab-pane" id="blog_${blog.id}">
+    	<h1>${blog.name}</h1>
+    	
+    	<a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger">Delete this Blog</a>
+    	
+		<p>${blog.url}</p>	
+<table class="table table-bordered table-hover table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Link</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${blog.items}" var="item">
+			<tr>
+				<td>${item.title}</td>
+				<td>${item.link}</td>
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
+    	
+    	</div>
+    </c:forEach>
+  </div>
+
+
+
+<!-- 
 <c:forEach items="${user.blogs}" var="blog">
 
 <h1>${blog.name}</h1>
@@ -60,4 +107,4 @@
 		</c:forEach>
 	</tbody>
 </table>
-</c:forEach>
+</c:forEach> -->
