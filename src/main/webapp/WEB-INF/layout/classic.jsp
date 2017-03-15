@@ -40,11 +40,13 @@
               <security:authorize access="hasRole('ROLE_ADMIN')">
               	<li class="${current=='users'?'active':''}"><a href="<spring:url value="/users.html" />">Users</a></li>
               </security:authorize>
-              <li class="${current=='register'?'active':''}"><a href="<spring:url value="/register.html" />">Register</a></li>
+         <!--      <li class="${current=='register'?'active':''}"><a href="<spring:url value="/register.html" />">Register</a></li> -->
               <security:authorize access="! isAuthenticated()">
               	<li class="${current=='login'?'active':''}"><a href="<spring:url value="/login.html" />">Login</a></li>
+              	<li class="${current=='register'?'active':''}"><a href="<spring:url value="/register.html" />">Register</a></li>
               </security:authorize>
               <security:authorize access="isAuthenticated()">
+              <li class="${current=='users'?'active':''}"><a href="<spring:url value="/account.html" />">My Account</a></li>
               	<li><a href="<spring:url value="/logout" />">Logout</a></li>
               </security:authorize>
             </ul>
