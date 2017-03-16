@@ -59,7 +59,7 @@
 <center>
 <tiles:insertAttribute name="footer" />
 </center>
-
+<!--  -->
 </div>
 
 </body>

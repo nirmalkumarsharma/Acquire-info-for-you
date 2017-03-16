@@ -40,9 +40,11 @@ public class UserService {
 	{
 		return userRepository.findAll();
 	}
+	
 	public User findOne(int id) {
 		return userRepository.findOne(id);
 	}
+	
 	@Transactional
 	public User findOneWithBlogs(int id) {
 		User user=findOne(id);
@@ -55,6 +57,7 @@ public class UserService {
 		user.setBlogs(blogs);
 		return user;
 	}
+	
 	public void save(User user) {
 		user.setEnabled(true);
 		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
@@ -66,10 +69,12 @@ public class UserService {
 		
 		userRepository.save(user);
 	}
+	
 	public User findOneWithBlogs(String name) {
 		User user=userRepository.findByName(name);
 		return findOneWithBlogs(user.getId());
 	}
+	
 	public void delete(int id) {
 		userRepository.delete(id);
 	}

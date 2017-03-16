@@ -10,6 +10,7 @@ import cz.jiripinkas.jba.repository.UserRepository;
 
 @Service
 public class BlogService {
+	
 	@Autowired
 	private BlogRepository blogRepository;
 	
