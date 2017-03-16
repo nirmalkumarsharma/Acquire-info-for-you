@@ -63,22 +63,22 @@
     	<a href="<spring:url value="/blog/remove/${blog.id}.html" />" class="btn btn-danger">Delete this Blog</a>
     	
 		<p>${blog.url}</p>	
-<table class="table table-bordered table-hover table-striped">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Link</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach items="${blog.items}" var="item">
+	<table class="table table-bordered table-hover table-striped">
+		<thead>
 			<tr>
-				<td>${item.title}</td>
-				<td>${item.link}</td>
+				<th>Title</th>
+				<th>Link</th>
 			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<c:forEach items="${blog.items}" var="item">
+				<tr>
+					<td>${item.title}</td>
+					<td>${item.link}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
     	
     	</div>
     </c:forEach>
