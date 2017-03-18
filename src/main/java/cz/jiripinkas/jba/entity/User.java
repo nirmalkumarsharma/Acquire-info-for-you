@@ -20,15 +20,15 @@ public class User {
 		@GeneratedValue
 		private Integer id;
 		
-		@Size(min = 3, message = "Name should be atleast three characters")
+		@Size(min = 3, message = "Name must be at least 3 characters!")
 		private String name;
 		
-		@Size(min = 2, message = "Invalid email address")
-		@Email(message = "Invalid email address")
+		@Email(message = "Invalid email address!")
 		private String email;
 		
-		@Size(min = 6, message = "password should be atleast six characters")
+		@Size(min = 5, message = "Name must be at least 5 characters!")
 		private String password;
+		
 		private boolean enabled;
 		
 		public boolean isEnabled() {

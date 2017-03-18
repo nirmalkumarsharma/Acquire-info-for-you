@@ -26,20 +26,20 @@ public class UserController {
 	
 	@Autowired
 	private BlogService blogService;
-	
+	/*
 	@ModelAttribute("user")
 	public User constructUser()
 	{
 		return new User();
 	}
-	
+	*/
 	@ModelAttribute("blog")
 	public Blog constructBlog()
 	{
 		return new Blog();
 	}
 	
-	@RequestMapping("/users")
+	/*@RequestMapping("/users")
 	public String users(Model model)
 	{
 		model.addAttribute("users", userService.findAll());
@@ -51,8 +51,8 @@ public class UserController {
 	{
 		model.addAttribute("user", userService.findOneWithBlogs(id));
 		return "user-detail";
-	}
-	
+	}*/
+	/*
 	@RequestMapping("/register")
 	public String showRegister()
 	{
@@ -69,13 +69,13 @@ public class UserController {
 		userService.save(user);
 		return "redirect:/register.html?success=true";
 	}
-	
+	*/
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal)
 	{
 		String name=principal.getName();
 		model.addAttribute("user", userService.findOneWithBlogs(name));
-		return "user-detail";
+		return "account";
 	}
 	
 	@RequestMapping(value="/account", method=RequestMethod.POST)
@@ -96,11 +96,11 @@ public class UserController {
 		blogService.delete(blog);
 		return "redirect:/account.html";
 	}
-	@RequestMapping("/users/remove/{id}")
 	
+	/*@RequestMapping("/users/remove/{id}")
 	public String removeUser(@PathVariable int id)
 	{
 		userService.delete(id);
 		return "redirect:/users.html";
-	}
+	}*/
 }
