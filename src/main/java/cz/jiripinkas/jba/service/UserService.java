@@ -78,4 +78,8 @@ public class UserService {
 	public void delete(int id) {
 		userRepository.delete(id);
 	}
+
+	public User findOne(String username) {
+		return userRepository.findByName(username);
+	}
 }
