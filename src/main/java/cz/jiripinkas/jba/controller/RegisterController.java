@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cz.jiripinkas.jba.entity.User;
-import cz.jiripinkas.jba.repository.UserRepository;
 import cz.jiripinkas.jba.service.UserService;
 
 @Controller
