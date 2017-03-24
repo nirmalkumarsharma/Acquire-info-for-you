@@ -13,14 +13,14 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<context:component-scan base-package="cz.jiripinkas.jba">
+	<context:component-scan base-package="in.nks.nit">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
 	<jdbc:embedded-database type="HSQL" id="dataSource" />
 
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
-		<property name="packagesToScan" value="cz.jiripinkas.jba.entity" />
+		<property name="packagesToScan" value="in.nks.nit.entity" />
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaProperties">
 			<props>
@@ -38,7 +38,7 @@
 	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	<jpa:repositories base-package="cz.jiripinkas.jba.repository" />
+	<jpa:repositories base-package="in.nks.nit.repository" />
 	<import resource="security.xml"/>
 	
 	<task:annotation-driven/>

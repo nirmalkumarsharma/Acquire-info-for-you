@@ -6,7 +6,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Create new blog
+ New Thread
 </button>
 <form:form commandName="blog" cssClass="form-horizontal blogForm">
 <!-- Modal -->
@@ -15,7 +15,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Enter name and link of new Feed</h4>
       </div>
       <div class="modal-body">
       	<div class="form-group">

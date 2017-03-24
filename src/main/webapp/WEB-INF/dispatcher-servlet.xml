@@ -10,7 +10,7 @@
 
 <mvc:annotation-driven />
 
-<context:component-scan base-package="cz.jiripinkas.jba.controller" />
+<context:component-scan base-package="in.nks.nit.controller" />
 
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">

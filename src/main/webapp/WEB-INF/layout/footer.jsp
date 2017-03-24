@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-&copy;Nirmal Kumar Sharma
+&copy;Acquire Info For You
 </body>
 </html>

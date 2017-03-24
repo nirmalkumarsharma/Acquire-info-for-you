@@ -54,7 +54,7 @@
 	<div class="alert alert-success">Registration Successfull!</div>
 </c:if>
 	<div class="form-group">
-		<label for="name" class="col-sm-2 control-label">Name:</label>
+		<label for="name" class="col-sm-2 control-label">Username:</label>
 		<div class="col-sm-10">
 			<form:input path="name" cssClass="form-control" />
 			<form:errors path="name" />
@@ -81,8 +81,19 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-2">
-			<input type="submit" value="save" class="btn btn-lg btn-primary" />
+		<div class="btn-toolbar btn-toolbar-centered" role="toolbar">
+		<div class="col-sm-offset-5 col-sm-2 text-center">
+			<div class="btn-group" role="group">
+				<input type="submit" value="Save" class="btn btn-lg btn-primary"/>
+			</div>
+			<div>
+			<span style="width: 30px"></span>
+			</div>
+			<div class="btn-group" role="group">
+				<input type="reset" value="Clear" class="btn btn-lg btn-secondry"/>
+			</div>
+			</div>
 		</div>
 	</div>
 </form:form>
+
