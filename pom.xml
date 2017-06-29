@@ -13,6 +13,19 @@
   </properties>
   
   <dependencies>
+  
+	<dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.40</version>
+	</dependency>
+  
+	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-c3p0</artifactId>
+    	<version>4.3.4.Final</version>
+	</dependency>
+  	
   			
 	<dependency>
   		<groupId>org.postgresql</groupId>
@@ -80,7 +93,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.4.Final</version>
 		</dependency>
-  
+  		
+		<dependency>
+    		<groupId>org.hibernate</groupId>
+    		<artifactId>hibernate-c3p0</artifactId>
+    		<version>4.3.4.Final</version>
+		</dependency>
   
  		<dependency>
 			<groupId>javax.servlet</groupId>

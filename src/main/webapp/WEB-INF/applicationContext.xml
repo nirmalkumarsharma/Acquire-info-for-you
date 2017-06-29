@@ -2,10 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -17,7 +17,21 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	<jdbc:embedded-database type="HSQL" id="dataSource" />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+    	<!-- Connection properties -->
+    	<property name="driverClass" value="com.mysql.jdbc.Driver" />
+    	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/AcquireIFU" />
+    	<property name="user" value="root" />
+    	<property name="password" value="1234" />
+    	
+    	<!-- Pool properties -->
+    	<property name="minPoolSize" value="5" />
+    	<property name="maxPoolSize" value="200" />
+    	<property name="acquireIncrement" value="1" />
+    	<property name="maxStatements" value="500" />
+    	<property name="idleConnectionTestPeriod" value="3000" />
+    	<property name="loginTimeout" value="300" />
+ 	</bean>
 
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
 		<property name="packagesToScan" value="in.nks.nit.entity" />
@@ -25,7 +39,7 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 		<property name="persistenceProvider">
@@ -38,8 +52,11 @@
 	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
 	<jpa:repositories base-package="in.nks.nit.repository" />
+	
 	<import resource="security.xml"/>
 	
 	<task:annotation-driven/>
+
 </beans>
