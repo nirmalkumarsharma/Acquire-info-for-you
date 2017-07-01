@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import in.nks.nit.entity.Blog;
-import in.nks.nit.entity.User;
 import in.nks.nit.service.BlogService;
 import in.nks.nit.service.UserService;
 

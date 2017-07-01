@@ -17,14 +17,16 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
+	<!-- 
+	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-    	<!-- Connection properties -->
+    	Connection properties
     	<property name="driverClass" value="com.mysql.jdbc.Driver" />
     	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/AcquireIFU" />
     	<property name="user" value="root" />
     	<property name="password" value="1234" />
     	
-    	<!-- Pool properties -->
+    	Pool properties
     	<property name="minPoolSize" value="5" />
     	<property name="maxPoolSize" value="200" />
     	<property name="acquireIncrement" value="1" />
@@ -32,6 +34,18 @@
     	<property name="idleConnectionTestPeriod" value="3000" />
     	<property name="loginTimeout" value="300" />
  	</bean>
+
+	-->
+	
+	<bean class="java.net.URI" id="dbUrl">
+    	<constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+   		<property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
+    	<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+    	<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+	</bean>
 
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
 		<property name="packagesToScan" value="in.nks.nit.entity" />
